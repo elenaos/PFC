@@ -42,15 +42,67 @@
 # ----------------------------------------------------------------------------------------------------
 # 1. Descargamos la versión 7 de java para linux x64
 # http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+# 2. Subir el fichero descargado a la máquina a la carpeta /home/java
+#    En este paso marcar la opción que los descomprime al subir, sino descomprimir una vez subido
+#	 con la orden tar xvzf jdk-7u75-linux-x64.tar.gz (o el nombre con el que aparezca el fichero)
+# 3. Modificar el PATH, para añadir/modificar la variable JAVA_HOME
+#	  nano /etc/profile
+#	  JAVA_HOME=/usr/local/java/jdk1.7.0_21
+#	  PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+#     export JAVA_HOME
+#     export PATH
+# 4. Indicar localización de JRE/JDK
+#    update-alternatives --install "/home/java" "java" "/home/java/jdk1.7.0_75/bin/java" 1 
+update-alternatives --install "/home/java" "java" "/home/java/jdk1.7.0_75/bin/java" 1 
+# 5. Indica java listo
+# 	 update-alternatives --install "/home/javac" "javac" "/home/java/jdk1.7.0_75/bin/javac" 1
+update-alternatives --install "/home/javac" "javac" "/home/java/jdk1.7.0_75/bin/javac" 1
+# 6. Indica java web listo
+# 	 update-alternatives --install "/home/javaws" "javaws" "/home/java/jdk1.7.0_75/bin/javaws" 1 
+update-alternatives --install "/home/javaws" "javaws" "/home/java/jdk1.7.0_75/bin/javaws" 1
+# 7. Seleccionar java por defecto
+#	 update-alternatives --set java /home/java/jdk1.7.0_75/bin/java 
+#	 update-alternatives --set javac /home/java/jdk1.7.0_75/bin/javac 
+#    update-alternatives --set javaws /home/java/jdk1.7.0_75/bin/javaws
+update-alternatives --set java /home/java/jdk1.7.0_75/bin/java 
+update-alternatives --set javac /home/java/jdk1.7.0_75/bin/javac 
+update-alternatives --set javaws /home/java/jdk1.7.0_75/bin/javaws 
+# 8. Reargar el PATH
+# 	 . /etc/profile
+. /etc/profile
+# 9. Comprobar que la isntalación ha sido correcta
+# 	 java -version  (debe salir la información correspondiente a la versión que hemos instalado)
+java -version
 # ----------------------------------------------------------------------------------------------------
 # Instalar Ruby
 # ----------------------------------------------------------------------------------------------------
-#
+# 1. Instalar Ruby para el correcto funcionamiento de Fuseki
+# 	 apt-get install ruby-full
+apt-get install ruby-full
 # ----------------------------------------------------------------------------------------------------
 # Instalar y configurar Fuseki
 # ----------------------------------------------------------------------------------------------------
-#
-# ----------------------------------------------------------------------------------------------------
+# 1. Descargar la versión de Fuseki (Si el enlace no lleva a la descarga directa buscar en
+# http://jena.apache.org/documentation/serving_data/)
+# https://repository.apache.org/content/repositories/snapshots/org/apache/jena/jena-fuseki1/1.1.2-SNAPSHOT/jena-fuseki1-1.1.2-20150305.163207-1-distribution.zip
+# 2. Subir el fichero descargado a la máquina a la carpeta /home/
+#    En este paso marcar la opción que los descomprime al subir, sino descomprimir una vez subido
+#	 con la orden tar xvzf jena-fuseki-1.1.2-20150305.163207-1-distribution.zip (o el nombre con el que aparezca el fichero)
+# 3. Dar permiso de ejecución
+# 	 chmod +x fuseki-server s-*
+chmod +x fuseki-server s-*
+# 4. Ejecutar el servidor
+# 	 ./fuseki-server --update --mem /ds
+./fuseki-server --update --mem /ds
+# 5. Cargar el fichero RDF
+# 	 s-put http://localhost:3030/ds/data default salida.rdf ---------COMPROBAR NOMBRE Y RUTA FINAL!!1
+# 6. Instrucción para ver e fichero RDF cargado
+#	 s-get http://localhost:3030/ds/data default
+# 7. Función para interrogar con SPARQL sobre el ficheor RDF cargado en memoria
+#    s-query --service http://localhost:3030/ds/query 'query a realizar'
+# 8.Función para borrar el RDF cargado en memoria
+#    s-update --service http://localhost:3030/ds/update 'CLEAR DEFAULT'
+#----------------------------------------------------------------------------------------------------
 # Instalar y configurar MapServer
 # ----------------------------------------------------------------------------------------------------
 #
