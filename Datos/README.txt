@@ -1,4 +1,6 @@
 El fichero datosClean.txt contiene los datos ya listos para cargarlos en la BD del proyecto
+Descargar desde la siguiente url:
+https://www.dropbox.com/s/mhi4ofua0lopinm/datosClean.txt?dl=0
 
 En la carpeta appCleanDatos+CargaDatos se puede encontrar :
  1-la aplicación (crearCSVngbe.java) con la que se ha hecho la adaptación de los datos proporcionados en la BD original. 
