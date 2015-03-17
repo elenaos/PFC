@@ -10,3 +10,9 @@ En la carpeta appCleanDatos+CargaDatos se puede encontrar :
 La BD NGBEv2013 que corresponde con el Noménclator Geográfico Básico de España se puede descargar en la siguiente url:
 
 http://centrodedescargas.cnig.es/CentroDescargas/equipamiento.do;jsessionid=2C8DC70FED7FF40D493A1510677267CC?method=mostrarEquipamiento
+
+El fichero crearPunto_3857.ktr es un proyecto de GeoKettle con el que se clasifican los registros almacenados en la tabla ngbev2013
+de la base de datos, según su huso, y se hacen las transformaciones necesarias para crear la geometría en el sistema de referencias
+utilizado.
+
+El fichero  NGBE (backup) es una copia de seguridad de la base de datos utilizada en el proyecto.
