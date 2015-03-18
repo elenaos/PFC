@@ -75,7 +75,7 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Entrada datos BD</from><to>seleccionar_campos</to><enabled>Y</enabled> </hop>  <hop> <from>seleccionar_campos</from><to>separar_por_huso</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso30</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso31 </to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso29</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso30</from><to>huso_30_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso31 </from><to>huso_31_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso29</from><to>huso_29_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>huso_30_crs_to_3857</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>huso_30_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>añadir_col_crs</from><to>Table output</to><enabled>Y</enabled> </hop>  <hop> <from>huso_31_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>huso_29_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>crear_punto_huso28</from><to>huso_28_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso27</from><to>huso_27_crs_to_3857 </to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso28</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso27</to><enabled>Y</enabled> </hop>  <hop> <from>huso_28_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>huso_27_crs_to_3857 </from><to>añadir_col_crs</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Entrada datos BD</from><to>seleccionar_campos</to><enabled>Y</enabled> </hop>  <hop> <from>seleccionar_campos</from><to>separar_por_huso</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso30</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso31 </to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso29</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso30</from><to>huso_30_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso31 </from><to>huso_31_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso29</from><to>huso_29_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>huso_30_crs_to_3857</from><to>Table output</to><enabled>N</enabled> </hop>  <hop> <from>huso_30_crs_to_3857</from><to>añadir_col_crs</to><enabled>Y</enabled> </hop>  <hop> <from>añadir_col_crs</from><to>Table output</to><enabled>Y</enabled> </hop>  <hop> <from>huso_31_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>huso_29_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>crear_punto_huso28</from><to>huso_28_crs_to_3857</to><enabled>Y</enabled> </hop>  <hop> <from>crear_punto_huso27</from><to>huso_27_crs_to_3857 </to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso28</to><enabled>Y</enabled> </hop>  <hop> <from>separar_por_huso</from><to>crear_punto_huso27</to><enabled>Y</enabled> </hop>  <hop> <from>huso_28_crs_to_3857</from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  <hop> <from>huso_27_crs_to_3857 </from><to>añadir_col_crs</to><enabled>N</enabled> </hop>  </order>
   <step>
     <name>Entrada datos BD</name>
     <type>TableInput</type>
@@ -180,7 +180,75 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>818</xloc>
-      <yloc>38</yloc>
+      <yloc>90</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>crear_punto_huso27</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>point</field_name>
+<calc_type>GEOMETRY_FROMXY</calc_type>
+<field_a>xutm_etrs89_regcan95</field_a>
+<field_b>yutm_etrs89_regcan95</field_b>
+<field_c/>
+<field_d/>
+<field_e/>
+<value_type>Geometry</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>530</xloc>
+      <yloc>346</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>crear_punto_huso28</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>point</field_name>
+<calc_type>GEOMETRY_FROMXY</calc_type>
+<field_a>xutm_etrs89_regcan95</field_a>
+<field_b>yutm_etrs89_regcan95</field_b>
+<field_c/>
+<field_d/>
+<field_e/>
+<value_type>Geometry</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>533</xloc>
+      <yloc>270</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -283,6 +351,72 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>548</xloc>
       <yloc>115</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>huso_27_crs_to_3857 </name>
+    <type>SRSTransformation</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<field_name>point</field_name>
+<source_gui_status>1</source_gui_status>
+<target_gui_status>1</target_gui_status>
+    <source_srs>
+<authority>EPSG</authority>
+<srid>25828</srid>
+<description>ETRS89 &#47; UTM zone 28N</description>
+<is_custom>N</is_custom>
+    </source_srs>
+    <target_srs>
+<authority>EPSG</authority>
+<srid>3857</srid>
+<description>WGS 84 &#47; Pseudo-Mercator</description>
+<is_custom>N</is_custom>
+    </target_srs>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>766</xloc>
+      <yloc>341</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>huso_28_crs_to_3857</name>
+    <type>SRSTransformation</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<field_name>point</field_name>
+<source_gui_status>1</source_gui_status>
+<target_gui_status>1</target_gui_status>
+    <source_srs>
+<authority>EPSG</authority>
+<srid>25828</srid>
+<description>ETRS89 &#47; UTM zone 28N</description>
+<is_custom>N</is_custom>
+    </source_srs>
+    <target_srs>
+<authority>EPSG</authority>
+<srid>3857</srid>
+<description>WGS 84 &#47; Pseudo-Mercator</description>
+<is_custom>N</is_custom>
+    </target_srs>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>721</xloc>
+      <yloc>270</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -460,140 +594,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>382</xloc>
       <yloc>193</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>crear_punto_huso28</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>point</field_name>
-<calc_type>GEOMETRY_FROMXY</calc_type>
-<field_a>xutm_etrs89_regcan95</field_a>
-<field_b>yutm_etrs89_regcan95</field_b>
-<field_c/>
-<field_d/>
-<field_e/>
-<value_type>Geometry</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>533</xloc>
-      <yloc>270</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>huso_28_crs_to_3857</name>
-    <type>SRSTransformation</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<field_name>point</field_name>
-<source_gui_status>1</source_gui_status>
-<target_gui_status>1</target_gui_status>
-    <source_srs>
-<authority>EPSG</authority>
-<srid>25829</srid>
-<description>ETRS89 &#47; UTM zone 29N</description>
-<is_custom>N</is_custom>
-    </source_srs>
-    <target_srs>
-<authority>EPSG</authority>
-<srid>3857</srid>
-<description>WGS 84 &#47; Pseudo-Mercator</description>
-<is_custom>N</is_custom>
-    </target_srs>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>721</xloc>
-      <yloc>270</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>crear_punto_huso27</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>point</field_name>
-<calc_type>GEOMETRY_FROMXY</calc_type>
-<field_a>xutm_etrs89_regcan95</field_a>
-<field_b>yutm_etrs89_regcan95</field_b>
-<field_c/>
-<field_d/>
-<field_e/>
-<value_type>Geometry</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>530</xloc>
-      <yloc>346</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>huso_27_crs_to_3857 </name>
-    <type>SRSTransformation</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<field_name>point</field_name>
-<source_gui_status>1</source_gui_status>
-<target_gui_status>1</target_gui_status>
-    <source_srs>
-<authority>EPSG</authority>
-<srid>25829</srid>
-<description>ETRS89 &#47; UTM zone 29N</description>
-<is_custom>N</is_custom>
-    </source_srs>
-    <target_srs>
-<authority>EPSG</authority>
-<srid>3857</srid>
-<description>WGS 84 &#47; Pseudo-Mercator</description>
-<is_custom>N</is_custom>
-    </target_srs>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>766</xloc>
-      <yloc>341</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
