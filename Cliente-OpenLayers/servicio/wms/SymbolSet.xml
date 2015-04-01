@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SymbolSet xmlns="http://www.mapserver.org/mapserver">
+    <Symbol name="ngbe" type="ellipse">
+        <filled>TRUE</filled>
+        <Points>
+            <point x="1.0" y="1.0"/>
+        </Points>
+    </Symbol>
+    <Symbol name="ngbe-1" type="ellipse">
+        <filled>TRUE</filled>
+        <Points>
+            <point x="1.0" y="1.0"/>
+        </Points>
+    </Symbol>
+</SymbolSet>

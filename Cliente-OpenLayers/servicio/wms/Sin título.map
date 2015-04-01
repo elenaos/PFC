@@ -1,0 +1,41 @@
+LAYER
+  NAME "ngbe"
+  TYPE POINT
+  STATUS ON
+  CLASS
+    NAME "ngbe"
+    STATUS ON
+    DEBUG ON
+    
+    STYLE
+      COLOR 110 87 116
+      OFFSET 0 0
+      SIZE 4.0
+      SYMBOL "ngbe"
+    END
+    
+  END
+  DATA "C:\Users\Elena\Desktop\pfc\ngbe.shp"
+  DEBUG 5
+  DUMP TRUE
+  EXTENT -1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975
+  
+  LABELCACHE OFF
+  METADATA
+    "wms_title" "ngbe"
+    "wms_name" "ngbe"
+    "wms_abstract" "ngbe"
+    "wms_extent" "-1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975"
+    "wms_srs" "EPSG:4326"
+    "gml_include_items" "all"
+    "gml_geometries" "geometry"
+    "gml_geometry_type" "point"
+  END
+  OPACITY 100
+  POSTLABELCACHE FALSE
+  PROJECTION
+    "init=epsg:4326"
+  END
+  TEMPLATE "."
+END
+

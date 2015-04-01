@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LayerSet xmlns="http://www.mapserver.org/mapserver">
+    <Layer name="ngbe" type="POINT" status="ON">
+        <Class name="ngbe" status="ON">
+            <debug>ON</debug>
+            <Style>
+                <color red="110" green="87" blue="116"/>
+                <offset x="0" y="0"/>
+                <size>4.0</size>
+                <symbol type="String">&quot;ngbe&quot;</symbol>
+            </Style>
+        </Class>
+        <data>C:\Users\Elena\Desktop\pfc\ngbe.shp</data>
+        <debug>5</debug>
+        <dump>TRUE</dump>
+        <extent>-1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975</extent>
+        <labelCache>OFF</labelCache>
+        <Metadata>
+            <item name="wms_title">ngbe</item>
+            <item name="wms_name">ngbe</item>
+            <item name="wms_abstract">ngbe</item>
+            <item name="wms_extent">-1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975</item>
+            <item name="wms_srs">EPSG:4326</item>
+            <item name="gml_include_items">all</item>
+            <item name="gml_geometries">geometry</item>
+            <item name="gml_geometry_type">point</item>
+        </Metadata>
+        <opacity>100</opacity>
+        <postLabelCache>FALSE</postLabelCache>
+        <projection>init=epsg:4326</projection>
+        <template>.</template>
+    </Layer>
+</LayerSet>

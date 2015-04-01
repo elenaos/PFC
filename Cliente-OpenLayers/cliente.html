@@ -1,0 +1,128 @@
+ <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style type="text/css">
+        #map {
+            width: 512px;
+            height: 512px;
+            border: 1px solid black;
+        }
+    </style>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+	<script type="text/javascript" src="js/OpenLayers_base.js"></script>
+    <script type="text/javascript">
+            OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+                defaultHandlerOptions: {
+                    'single': true,
+                    'double': false,
+                    'pixelTolerance': 0,
+                    'stopSingle': false,
+                    'stopDouble': false
+                },
+
+                initialize: function(options) {
+                    this.handlerOptions = OpenLayers.Util.extend(
+                        {}, this.defaultHandlerOptions
+                    );
+                    OpenLayers.Control.prototype.initialize.apply(
+                        this, arguments
+                    ); 
+                    this.handler = new OpenLayers.Handler.Click(
+                        this, {
+                            'click': this.onClick,
+                            'dblclick': this.onDblclick 
+                        }, this.handlerOptions
+                    );
+                }, 
+
+                onClick: function(evt) {
+                    var output = document.getElementById(this.key + "Output");
+                    var msg = "click " + evt.xy;
+                    output.value = output.value + msg + "\r\n";
+                } 
+
+            });
+
+        var map, controls; 
+
+            function init(){
+        
+                map = new OpenLayers.Map('map');
+                var layer = new OpenLayers.Layer.WMS(
+                    "OpenLayers WMS",
+                    "http://vmap0.tiles.osgeo.org/wms/vmap0",
+                    {layers: 'basic'}
+                );
+                map.addLayers([layer]);
+                map.addControl(new OpenLayers.Control.MousePosition({ numDigits: 2 }));
+			map.addControl(new OpenLayers.Control.ScaleLine());
+			map.setCenter(new OpenLayers.LonLat(0, 40), 5);
+			
+			var layerNGBE = new OpenLayers.Layer.WMS( "NGBE",
+                     "http://localhost/cgi-bin/mapserv.exe?map=C:/Users/Elena%20Oliván/Desktop/PFC-LOCAL/Cliente-OpenLayers/servicio/wms/mapfile.map",
+					 {layers: "ngbe",
+					 transparent: true
+					} );
+         
+            map.addLayers([layerNGBE]);
+			map.addControl(new OpenLayers.Control.LayerSwitcher(true));
+			
+			
+                controls = {
+                    "single": new OpenLayers.Control.Click({
+                        handlerOptions: {
+                            "single": true
+                        }
+                    })
+                };
+
+                var props = document.getElementById("props");
+                var control;
+                for(var key in controls) {
+                    control = controls[key];
+                    // only to route output here
+                    control.key = key;
+					
+                    map.addControl(control);
+                }
+
+               
+            }
+			 function toggle(key) {
+                var control = controls[key];
+                if(control.active) {
+                    control.deactivate();
+                } else {
+                    control.activate();
+                }
+                var status = document.getElementById(key + "Status");
+                status.innerHTML = control.active ? "on" : "off";
+                var output = document.getElementById(key + "Output");
+                output.value = "";
+            }
+	</script>
+	
+   </head>
+   <body onload="init()">
+
+         <b>Ejemplo de WMS</b>
+   
+     <div>
+         Mi WMS
+     </div>
+   
+     <div id="map"></div>
+	<div id="east">
+            <table>
+                <caption>Controls with click handlers (toggle on/off to clear output)</caption>
+                <tbody>
+                    <tr>
+                        <td>single only</td>
+                        <td><button id="singleStatus" onclick="toggle('single')">off</button></td>
+                        <td><textarea class="output" id="singleOutput"></textarea></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+   </body>
+  </html>

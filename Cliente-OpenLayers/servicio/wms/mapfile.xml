@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Map xmlns="http://www.mapserver.org/mapserver" name="LayerNGBE">
+    <debug>5</debug>
+    <extent>-1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975</extent>
+    <imageColor red="255" green="255" blue="255"/>
+    <include>LayerNGBE.map</include>
+    <include>prueba2layers.map</include>
+    <projection>init=epsg:4326</projection>
+    <scaleDenom>4.672071054363E12</scaleDenom>
+    <size x="525" y="459"/>
+    <symbolSet>./SymbolSet.sym</symbolSet>
+    <units>meters</units>
+    <Web>
+        <Metadata>
+            <item name="ows_enable_request">*</item>
+            <item name="wms_title">PruebaOpenStreetMap</item>
+            <item name="wms_abstract">Probando WMS (Solo NGBE layer)</item>
+            <item name="wms_srs">EPSG:4326 EPSG:900913</item>
+            <item name="wms_encoding">UTF-8</item>
+            <item name="wms_extent">-1349137.3450844653 333006.18741961016 4244231.64430727 5487688.9280563975</item>
+        </Metadata>
+    </Web>
+</Map>
